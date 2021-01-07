@@ -1,0 +1,32 @@
+body{
+    margin: 10px;
+}
+
+h1 {
+    color: blue;
+    text-align: center;
+}
+
+.input-group { 
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 50%;
+    border: 3px solid blue;
+    padding: 10px;
+    margin-bottom: 10px;
+
+}
+
+.input{
+    text-align: center;
+    padding: 10px;
+
+}
+.searchBtn{
+    margin: 10px;
+    border-collapse: separate;
+    padding: 10px;
+    align-items: center;
+    background-color: cornflowerblue;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <!-- Linked items -->
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- linking stylesheet -->
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <h1>Welcome to the Weather Dashboard</h1>
+    
+    <!-- city name input -->
+    <div class="input-group">
+        <input class= "input" type="text" class="form-control" placeholder="Enter city name here" aria-label="Example text with button addon" aria-describedby="button-addon1">
+        <button class="searchBtn" type="button" id="button-addon1">Get Forecast</button>
+    </div>
+
+    <div class="currentWeather"></div>
+    <div class="fiveDayWeather"></div>
+
+
+    
+<!-- linked jquery library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- linked javascript page -->
+<script src="assets/index.js"></script>  
+</body>
+</html>
