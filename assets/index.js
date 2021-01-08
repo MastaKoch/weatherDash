@@ -1,4 +1,4 @@
-var apiKey= "f60be35f3eda0b69e1466b12ddac604e";
+const apiKey= "f60be35f3eda0b69e1466b12ddac604e";
 var cityName= `London`;
 
 
@@ -34,14 +34,21 @@ $.ajax({
     // Log the currentWeatherURL
     console.log(currentWeatherURL);
 
-    // Log the resulting object
     console.log(response);
-  });
+    // Log the resulting object
+    console.log(response.main.temp);
 
-  
-//   Temperature
+
+//   Current Temperature
 var temperature= $("<p>").addClass("temp").text(cityName+"Temperature: "+response.main.temp+"F");
 $(".currentWeather").append(temperature)
+
+var humidity= $("<p>").addClass("humidity").text("Humidity: "+response.main.humidity);
+$(".currentWeather").append(humidity)
+
+var windSpeed= $("<p>").addClass("wind").text("Wind Speed: "+response.wind.speed);
+$(".currentWeather").append(windSpeed)
+  });
 };
 
 
