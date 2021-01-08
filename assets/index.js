@@ -24,7 +24,6 @@ $(".searchBtn").on("click", function(event){
 
 // defines the oneCallAPI function
 function oneCallAPI(latitude, longitude) {
-    console.log('oneCallAPI', latitude, longitude);
     var oneCallURL= `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`;
     // const iconURL= "https://openweathermap.org/img/wn/XXX@2x.png"
     // var iconUrl1= iconURL.replace("XXX", iconCode);
@@ -35,6 +34,7 @@ function oneCallAPI(latitude, longitude) {
     method: "GET"
   })
   .then(function(response) {
+    console.log('oneCallAPI', latitude, longitude);
     console.log(response);
 
     var uvIndex= $("<p>").addClass("uv").text("UV index: "+response.current.uvi);
@@ -78,7 +78,7 @@ $(".currentWeather").append(name);
 var temperature= $("<p>").addClass("temp").text("Temperature: "+response.main.temp+"F");
 $(".currentWeather").append(temperature);
 
-var humidity= $("<p>").addClass("humidity").text("Humidity: "+response.main.humidity);
+var humidity= $("<p>").addClass("humidity").text("Humidity: "+response.main.humidity+"%");
 $(".currentWeather").append(humidity);
 
 var windSpeed= $("<p>").addClass("wind").text("Wind Speed: "+response.wind.speed);
