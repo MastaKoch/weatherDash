@@ -38,8 +38,9 @@ $.ajax({
     console.log(response);
   });
 
-  // Temperature
-var temperature= $("<p>").addClass("temp").text(cityName+"Temperature: "+cityName.main.temp+"F");
+  
+//   Temperature
+var temperature= $("<p>").addClass("temp").text(cityName+"Temperature: "+response.main.temp+"F");
 $(".currentWeather").append(temperature)
 };
 
