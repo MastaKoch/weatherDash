@@ -25,8 +25,8 @@ $(".searchBtn").on("click", function(event){
 // defines the oneCallAPI function
 function oneCallAPI(latitude, longitude) {
     var oneCallURL= `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`;
-    // const iconURL= "https://openweathermap.org/img/wn/XXX@2x.png"
-    // var iconUrl1= iconURL.replace("XXX", iconCode);
+    
+   
     
   // AJAX call to oneCallAPI URL
   $.ajax({
@@ -34,14 +34,20 @@ function oneCallAPI(latitude, longitude) {
     method: "GET"
   })
   .then(function(response) {
+    var iconCode=response.daily[0].weather[0].icon;
+    var iconURL= `https://openweathermap.org/img/wn/${iconCode}@2x.png`
     console.log('oneCallAPI', latitude, longitude);
     console.log(response);
+    console.log(iconURL);
+    console.log(iconCode);
+    console.log(response.daily[0].weather[0].icon);
+    console.log(icon);
 
     var uvIndex= $("<p>").addClass("uv").text("UV index: "+response.current.uvi);
     $(".currentWeather").append(uvIndex);
-    // var iconCode=response.daily.icon;
-    // var icon= $(`<img href=${iconUrl1}>`).addClass("icon");
-    // $(".currentWeather").append(icon);
+    
+    var icon= $("<img>").attr("href", iconURL).addClass("icon");
+    $(".weatherIcon").append(icon);
   });
   
   };
