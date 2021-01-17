@@ -41,13 +41,14 @@ function oneCallAPI(latitude, longitude) {
     console.log(iconURL);
     console.log(iconCode);
     console.log(response.daily[0].weather[0].icon);
-    console.log(icon);
 
     var uvIndex= $("<p>").addClass("uv").text("UV index: "+response.current.uvi);
     $(".currentWeather").append(uvIndex);
     
-    var icon= $("<img>").attr("href", iconURL).addClass("icon");
-    $(".weatherIcon").append(icon);
+    var icon= $("<img>").attr("src", iconURL).addClass("icon");
+    $(".currentWeather").append(icon);
+
+    console.log(icon);
   });
   
   };

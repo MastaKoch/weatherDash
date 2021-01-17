@@ -1,5 +1,6 @@
 body{
     margin: 10px;
+    background-color: darkcyan;
 }
 
 h1 {
@@ -43,4 +44,13 @@ h3{
     align-items: center;
     align-content: center;
     text-align: center;
+}
+
+.icon{
+    height: 100px;
+    width: 100px;
+}
+
+.fiveDayWeather{
+    
 }
