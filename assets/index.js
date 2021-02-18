@@ -58,8 +58,8 @@ for (var i=1; i < 6; i ++) {
     var fiveDayHumid= $("<p>").addClass("fiveDayHumid").attr("id", i).text("Humidity: "+ dailyHumid + " %")
     $("#cardDeck").append(fiveDayHumid);
 
-    var fiveDayIconURL= `http://openweathermap.org/img/w/${dailyIcon}.png`
     var dailyIcon= response.daily[i].weather[0].icon;
+    var fiveDayIconURL= `http://openweathermap.org/img/w/${dailyIcon}.png`
     var fiveDayIcon= $("<img>").addClass("icon").attr("src", fiveDayIconURL);
     $("#cardDeck").append(fiveDayIcon);
 
