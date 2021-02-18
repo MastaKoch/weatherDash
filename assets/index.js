@@ -38,9 +38,6 @@ function oneCallAPI(latitude, longitude) {
     var iconURL= `https://openweathermap.org/img/wn/${iconCode}@2x.png`
     console.log('oneCallAPI', latitude, longitude);
     console.log(response);
-    console.log(iconURL);
-    console.log(iconCode);
-    console.log(response.daily[0].weather[0].icon);
 
     var uvIndex= $("<p>").addClass("uv").text("UV index: "+response.current.uvi);
     $(".currentWeather").append(uvIndex);
@@ -48,10 +45,34 @@ function oneCallAPI(latitude, longitude) {
     var icon= $("<img>").attr("src", iconURL).addClass("icon");
     $(".currentWeather").append(icon);
 
-    console.log(icon);
-  });
-  
-  };
+
+for (var i=1; i < 6; i ++) {
+  console.log(response.daily[i].temp.day);
+
+    var dailyTemp= response.daily[i].temp.day;
+    var fiveDayTemp= $("<p>").addClass("fiveDayTemp").attr("id", i).text("Temperature: "+ dailyTemp +" degrees Fahrenheit")
+    $("#cardDeck").append(fiveDayTemp);
+
+  console.log(response.daily[i].humidity)
+    var dailyHumid= response.daily[i].humidity;
+    var fiveDayHumid= $("<p>").addClass("fiveDayHumid").attr("id", i).text("Humidity: "+ dailyHumid + " %")
+    $("#cardDeck").append(fiveDayHumid);
+
+    var fiveDayIconURL= `http://openweathermap.org/img/w/${dailyIcon}.png`
+    var dailyIcon= response.daily[i].weather[0].icon;
+    var fiveDayIcon= $("<img>").addClass("icon").attr("src", fiveDayIconURL);
+    $("#cardDeck").append(fiveDayIcon);
+
+    console.log(fiveDayIconURL);
+    console.log(dailyIcon);
+    console.log(response.daily[1].weather[0].icon);
+};
+
+
+
+  })};
+
+
 
 
 
@@ -100,14 +121,3 @@ oneCallAPI(lat, long);
 });
 
 };
-
-
-
-
-
-
-
-
-
-
-
