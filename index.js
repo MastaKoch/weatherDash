@@ -3,9 +3,25 @@ var cityName= `London`;
 var lat= "51.5085";
 var long= "-0.1257";
 var cityArr= [];
+var searchHist= JSON.parse(localStorage.getItem("Search History"));
+
+
+
 
 // get array from local storage and run search from last city in array.
+if(localStorage.getItem("Search History")){
+  for (var x=0; x<searchHist.length; x ++) {
+      
+    var lastCity= $("<button>").addClass("historyBtn").text(searchHist[x]).attr("id", x);
+    $(".searchHistory").append(lastCity);
+  
+  }
+cityArr.push(...searchHist);
+openWeatherAPI(searchHist[searchHist.length-1])
 
+
+$(".searchHistory").append(searchHist[searchHist.length-1]);
+}
 /* onclick function - when you click the .searchBtn, 
 runs openWeather, fiveDayForecast, and oneCall API calls */
 $(".searchBtn").on("click", function(event){
@@ -87,8 +103,6 @@ $.ajax({
   })
   
   .then(function(response) {
-    
-    var searchHist= response.name;
 
      $(".searchHistory").empty()
     for (var j=0; j<cityArr.length; j ++) {
