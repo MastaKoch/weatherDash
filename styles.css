@@ -24,7 +24,7 @@ h1 {
     padding: 10px;
 
 }
-.searchBtn{
+.searchBtn, .historyBtn{
     margin: 10px;
     border-collapse: separate;
     padding: 10px;
@@ -37,7 +37,7 @@ h3{
     align-content: center;
     align-items: center;
 }
-.currentWeather, .fiveDayWeather{
+.currentWeather, .fiveDayWeather, .searchBox{
     padding: 15px;
     margin: 10px;
     border: 3px solid blue;

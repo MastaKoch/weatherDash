@@ -2,9 +2,9 @@ const apiKey= "f60be35f3eda0b69e1466b12ddac604e";
 var cityName= `London`;
 var lat= "51.5085";
 var long= "-0.1257";
+var cityArr= [];
 
-
-
+// get array from local storage and run search from last city in array.
 
 /* onclick function - when you click the .searchBtn, 
 runs openWeather, fiveDayForecast, and oneCall API calls */
@@ -17,6 +17,12 @@ $(".searchBtn").on("click", function(event){
     
    
     
+    cityArr.push(cityName);
+    console.log(cityArr);
+    localStorage.setItem("Search History", JSON.stringify(cityArr));
+    console.log(localStorage);
+
+   
     openWeatherAPI(cityName);
 });
 
@@ -37,6 +43,7 @@ function oneCallAPI(latitude, longitude) {
     var iconCode=response.daily[0].weather[0].icon;
     var iconURL= `https://openweathermap.org/img/wn/${iconCode}@2x.png`
  
+ 
 
     var uvIndex= $("<p>").addClass("uv").text("UV index: "+response.current.uvi);
     $(".currentWeather").append(uvIndex);
@@ -44,6 +51,7 @@ function oneCallAPI(latitude, longitude) {
     var icon= $("<img>").attr("src", iconURL).addClass("icon");
     $(".currentWeather").append(icon);
 
+$("#cardDeck").empty();
 
 for (var i=1; i < 6; i ++) {
 
@@ -62,12 +70,7 @@ for (var i=1; i < 6; i ++) {
 
 };
 
-
-
   })};
-
-
-
 
 
 // defines the openWeatherAPI function
@@ -82,16 +85,34 @@ $.ajax({
     url: currentWeatherURL, 
     method: "GET"
   })
-
+  
   .then(function(response) {
-    console.log(response);
     
+    var searchHist= response.name;
+
+     $(".searchHistory").empty()
+    for (var j=0; j<cityArr.length; j ++) {
+      
+      var searchItem= $("<button>").addClass("historyBtn").text(cityArr[j]).attr("id", j);
+      $(".searchHistory").append(searchItem);
+    
+    }
+   
+    $(".historyBtn").on("click", function(){
+      $(".currentWeather").empty();
+      $("#cardDeck").empty();
+
+      openWeatherAPI($(this).text());
+    
+    
+  });
+   
 
     var lat = response?.coord?.lat;
     var long = response?.coord?.lon;
-    
-  
 
+  
+    $(".currentWeather").empty();
 //   Current Temperature
 
 var name= $("<p>").addClass("name").text(response.name);
@@ -104,10 +125,6 @@ $(".currentWeather").append(humidity);
 
 var windSpeed= $("<p>").addClass("wind").text("Wind Speed: "+response.wind.speed);
 $(".currentWeather").append(windSpeed);
-
-
-
-
 
 oneCallAPI(lat, long);
   
